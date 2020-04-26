@@ -1,0 +1,29 @@
+server:
+  port: 9013
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka3000.com:3000/eureka
+  instance:
+    instance-id: hystrix-payment #此实例注册到eureka服务端的唯一的实例ID
+    prefer-ip-address: true #是否显示IP地址
+    leaseRenewalIntervalInSeconds: 1 #eureka客户需要多长时间发送心跳给eureka服务器，表明它仍然活着,默认为30 秒 (与下面配置的单位都是秒)
+    leaseExpirationDurationInSeconds: 3 #Eureka服务器在接收到实例的最后一次发出的心跳后，需要等待多久才可以将此实例删除，默认为90秒
+
+#fegin连接超时时间
+ribbon:
+  ReadTimeout: 10000   #负载均衡超时时间，默认值5000
+  ConnectTimeout: 4000 #ribbon请求连接的超时时间，默认值2000
+
+# feign和ribbon结合，指定策略。feign默认的是轮询的策略，这里的配置可以自定义
+FEIGN-PAYMENT:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+logging:
+  level:
+    com.thislx.order.PaymentService: debug
+
+spring:
+  application:
+    name: hystrix-payment
