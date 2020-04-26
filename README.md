@@ -462,7 +462,7 @@ https://github.com/Netflix/Hystrix
 
 > Hystrix is no longer in active development, and is currently in maintenance mode.
 
-### 服务降级
+### 服务降级（fallback）
 
 - 程序运行异常
 - 超时
@@ -475,6 +475,14 @@ https://github.com/Netflix/Hystrix
 - 被调用服务down机了，调用者不能一直卡死等待，必须有服务降级。
 - 被调用服务OK，调用者自己出故障或有自我要求（自己的等待时间小于服务提供者），自己服务降级。
 
-### 服务熔断
+### 服务熔断（break）
 
-### 服务限流
+- 断路器 （保险丝）
+- 熔断机制概述：熔断机制是应对雪崩效应的一种微服务链路保护机制，当扇出链路的某个微服务出错不可用或者响应时间太长，会产生服务降级。进而熔断该节点微服务调用，快速返回错误响应信息。当检测到该节点微服务调用响应正常后，**恢复调用链路**
+- 在Spring Cloud框架中。熔断机制通过Hystrix实现，Hystrix会监控微服务间调用的状况，当失败的调用到一定阈值，缺省值5秒内20次调用失败，就会启动熔断机制，熔断机制的注解是@HystrixCommand
+
+服务降级提倡者：https://martinfowler.com/bliki/CircuitBreaker.html
+
+![熔断机制](D:\Documents\WIKI\微服务\熔断机制.png)
+
+### 服务限流（flowlimit）

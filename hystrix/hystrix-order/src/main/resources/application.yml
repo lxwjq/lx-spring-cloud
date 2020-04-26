@@ -27,3 +27,8 @@ logging:
 spring:
   application:
     name: hystrix-order
+
+# feign开启hystrix
+feign:
+  hystrix:
+    enabled: true
