@@ -27,7 +27,14 @@ logging:
 spring:
   application:
     name: hystrix-order
-
+  sleuth:
+    sampler:
+      probability: 1 #采样率介于0和1之间   1表示全部采样 项目中使用建议0.5
+    enabled: true
+  zipkin:
+    base-url: http://127.0.0.1:9411  # zipkin监控地址
+    sender:
+      type: web
 # feign开启hystrix
 feign:
   hystrix:

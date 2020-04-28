@@ -24,6 +24,25 @@ logging:
   level:
     com.thislx.order.PaymentService: debug
 
+
 spring:
   application:
     name: hystrix-payment
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 1 #采样率介于0和1之间   1表示全部采样 项目中使用建议0.5
+  zipkin:
+    base-url: http://127.0.0.1:9411  # zipkin监控地址
+    sender:
+      type: web
+feign:
+  hystrix:
+    enabled: true
+
+#暴露全部的监控信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

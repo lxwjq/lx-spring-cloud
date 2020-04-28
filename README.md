@@ -54,7 +54,7 @@
 
 详细请查看源码 lx-spring-cloud
 
-![自己搭建的问题](img/自己搭建的问题.png)
+![自己搭建的问题](D:\Documents\WIKI\微服务\自己搭建的问题.png)
 
 ### 	微服务要面临的问题
 
@@ -75,7 +75,7 @@
 - 网关，路由，过滤    zuul
 - 服务注册与发现     eureka   zookeeper
 
-![熔断概念](img/熔断概念.png)
+![熔断概念](D:\Documents\WIKI\微服务\熔断概念.png)
 
 ### Spring-Cloud项目的搭建注意事项
 
@@ -83,7 +83,7 @@
 
 是spring-cloud的版本与spring-boot的版本要对应下图（www.spring.io）：
 
-![springboot-springcloud版本截图](img/springboot-springcloud版本截图.png)
+![springboot-springcloud版本截图](D:\Documents\WIKI\微服务\springboot-springcloud版本截图.png)
 
 
 
@@ -133,11 +133,11 @@ Eureka 采用了 C-S 的设计架构。Eureka Server 作为服务注册功能的
 
 ### 角色关系图
 
-![Eureka服务注册与发现](img/Eureka服务注册与发现.png)
+![Eureka服务注册与发现](D:\Documents\WIKI\微服务\Eureka服务注册与发现.png)
 
 ### Eureka结构图
 
-![Eurek结构图](img/Eurek结构图.png)
+![Eurek结构图](D:\Documents\WIKI\微服务\Eurek结构图.png)
 
 上图是官网给的基于集群部署的 Eureka 架构图，先看一下图上各个部件的表示含义以及它们之间的交互：
 
@@ -156,7 +156,7 @@ Eureka 采用了 C-S 的设计架构。Eureka Server 作为服务注册功能的
 
 **【注】**spring-cloud-starter-eureka-server依赖与spring-cloud-starter-netflix-eureka-server的区别
 
-![Eureka依赖问题](img/Eureka依赖问题.png)
+![Eureka依赖问题](D:\Documents\WIKI\微服务\Eureka依赖问题.png)
 
 springcloud更新换代比较快，可能1.5可以使用，到了2.0就不用了。所以做项目或者练习时要看清自己使用的版
 
@@ -166,7 +166,7 @@ netflix-eureka-server。
 
 官网说明：https://spring.io/projects/spring-cloud-netflix
 
-![官网Eureka版本说明](img/官网Eureka版本说明.png)
+![官网Eureka版本说明](D:\Documents\WIKI\微服务\官网Eureka版本说明.png)
 
 ### 代码实战
 
@@ -174,7 +174,7 @@ netflix-eureka-server。
 
 ### Eureka可视化界面详解
 
-![eureka控制台相关介绍](img/eureka控制台相关介绍.png)
+![eureka控制台相关介绍](D:\Documents\WIKI\微服务\eureka控制台相关介绍.png)
 
 #### Home
 
@@ -308,7 +308,7 @@ public void invalidate(Key... keys) {
 }
 ```
 
-![eureka缓存](img/eureka缓存.png)
+![eureka缓存](D:\Documents\WIKI\微服务\eureka缓存.png)
 
 Eureka Server存在三个变量：(**registry、readWriteCacheMap、readOnlyCacheMap**)保存服务注册信息，默
 
@@ -381,7 +381,7 @@ Nginx是服务器负载均衡，客户端多有请求都交给nginx，然后由n
 
 Ribbon本地负载均衡，在调用微服务接口时候，会在注册中心上获取注册信息服务列表之后缓存到本地JVM本地，从而在本地实现RPC远程服务调用技术。
 
-![客户端负载均衡和服务端负载均衡的区别](img/客户端负载均衡和服务端负载均衡的区别.png)
+![客户端负载均衡和服务端负载均衡的区别](D:\Documents\WIKI\微服务\客户端负载均衡和服务端负载均衡的区别.png)
 
 ### 代码实战
 
@@ -399,7 +399,7 @@ Ribbon本地负载均衡，在调用微服务接口时候，会在注册中心�
 
 IRule是什么? 它是Ribbon对于负载均衡策略实现的接口， 怎么理解这句话？ 说白了就是你实现这个接口，就能自定义负载均衡策略， 自定义我们待会儿来讲， 我们先来看看他有哪些默认的实现
 
-![IRule负载均衡策略](img/IRule负载均衡策略.png)
+![IRule负载均衡策略](D:\Documents\WIKI\微服务\IRule负载均衡策略.png)
 
 ## 四、Spring Cloud组件 - Open Feign
 
@@ -454,7 +454,7 @@ Feign旨在使编写Java Http客户端变得更容易。
 
 ### 降级，超时 
 
- 我们先来解释一下降级,降级是当我们的某个微服务响应时间过长，或者不可用了，讲白了也就是那个微服务调用不了了，我们不能吧错误信息返回出来，或者让他一直卡在那里，所以要在准备一个对应的策略（一个方法）当发生这种问题的时候我们直接调用这个方法来快速返回这个请求，不让他一直卡在那 。b
+ 我们先来解释一下降级,降级是当我们的某个微服务响应时间过长，或者不可用了，讲白了也就是那个微服务调用不了了，我们不能把错误信息返回出来，或者让他一直卡在那里，所以要在准备一个对应的策略（一个方法）当发生这种问题的时候我们直接调用这个方法来快速返回这个请求，不让他一直卡在那 。
 
 ### 停更维护
 
@@ -483,6 +483,244 @@ https://github.com/Netflix/Hystrix
 
 服务降级提倡者：https://martinfowler.com/bliki/CircuitBreaker.html
 
-![熔断机制](img/熔断机制.png)
+**熔断状态**
+
+- 熔断打开：请求不在进行调用当前服务，内部设置时钟一般为MTTR（平均故障时间），当打开时长达到所设时钟则进入半熔断状态
+- 熔断关闭：熔断关闭不会对服务进行熔断
+- 熔断半开：部分请求根据规则调用当前服务，如果请求成功且符合规则认为当前服务恢复正常，关闭熔断
+
+![熔断机制](D:\Documents\WIKI\微服务\熔断机制.png)
+
+熔断在什么情况下开始起作用
+
+![熔断在什么时间启动](D:\Documents\WIKI\微服务\熔断在什么时间启动.png)
+
+1. 当满足一定的阀值的时候（默认10秒超过20个请求次数）
+2. 当失败率达到一定的时候（默认10秒内超过50%的请求失败）
+3. 到达以上阀值，断路器将会开启
+4. 当开启的时候，所有的请求不会再进行转发
+5. 一般时间后（默认5秒），这个时候断路器是半开状态，会让其中一个请求进行转发，如果成功，断路器会关闭，如果失败，继续开启，重复4和5
+
+hystrix所有配置参数详解：https://blog.csdn.net/tongtong_use/article/details/78611225
 
 ### 服务限流（flowlimit）
+
+
+
+### 实时化监控
+
+hystrix可以搭建可视化界面
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+</dependency>
+```
+
+启动类上增加
+
+```java
+@EnableHystrixDashboard
+```
+
+Spring Cloud F版后需要配置Bean
+
+```java
+@Bean
+public ServletRegistrationBean getServlet(){
+    HystrixMetricsStreamServlet hystrixMetricsStreamServlet = new HystrixMetricsStreamServlet();
+    ServletRegistrationBean servletRegistrationBean = new ServletRegistrationBean(hystrixMetricsStreamServlet);
+    servletRegistrationBean.setLoadOnStartup(1);
+    servletRegistrationBean.addUrlMappings("/hystrix.stream");
+    servletRegistrationBean.setName("HystrixMetricsStreamServlet");
+    return servletRegistrationBean;
+}
+```
+
+七色、一圈、一线
+
+## 六、Spring Cloud组件 - Gateway
+
+### 是什么
+
+Cloud 全家桶中有个很重要的组件就是网关，在1.X版本中都是采用zuul网关，但是在2.X中，zuul网关升级出现分歧。Spring Cloud最后自己研发了一个网关代替zuul。
+
+SpringCloud Gateway（亲儿子）是Spring Cloud的一个全新项目,基于Spring 5.0+Spring Boot 2.0和Project Reactor等技术开发的网关,它旨在为微服务架构提供一种简单有效的统一的API路由管理方式。
+
+SpringCloud Gateway作为Spring Cloud生态系统中的网关,目标是替代Zuul,在Spring Cloud 2.0以上版本中,没有对新版本的Zuul 2.0以上最新高性能版本进行集成,仍然还是使用的Zuul 1.x非Reactor模式的老版本。而为了提升网关的性能, SpringCloud Gateway是基于WebFlux框架实现的,而WebFlux框架底层则使用了高性能的Reactor模式通信框架Netty.
+
+Spring Cloud Gateway的目标提供统一的路由方式且基于Filter链的方式提供了网关基本的功能,例如:安全,监控/指标,和限流。
+
+WebFlux是什么东东：https://blog.csdn.net/z69183787/article/details/104258659
+
+### 为什么选择Gateway
+
+一方面因为Zu1.0已经进入了维护阶段,而且Gateway是SpringCloud团队研发的,是亲儿子产品,值得信赖。
+而且很多功能Zuul都没有用起来也非常的简单便捷。
+
+Gateway是基于异步非阻塞模型上进行开发的,性能方面不需要担心。虽然Netflix早就发布了最新的Zuul 2.x,
+但Spring Cloud貌似没有整合计划。而且Netfix相关组件都宣布进入维护期;不知前景如何?
+
+多方面综合考虑Gateway是很理想的网关选择。
+
+### 能干什么
+
+- 反向代理
+- 鉴权
+- 流量控制
+- 熔断
+- 日志监控
+- 等等
+
+微服务架构中网关在什么位置，请看下图
+
+![gateway在框架中的位置](D:\Documents\WIKI\微服务\gateway在框架中的位置.png)
+
+### Gateway具有的特性
+
+- 基于Spring Framework 5, Project Reactor和Spring Boot 2.0进行构建;
+- 动态路由:能够匹配任何请求属性;
+- 可以对路由指定Predicate (断言)和Filter (过滤器) ;
+- 集成Hystrix的断路器功能;
+- 集成Spring Cloud服务发现功能;
+- 易于编写的Predicate (断言)和Filter (过滤器)
+- 请求限流功能;
+- 支持路径重写。
+
+### Spring Cloud Gateway与Zuul的区别
+
+在SpringCloud Finchley正式版之前, Spring Cloud推荐的网关是Netflix提供的Zuul:
+
+1.  Zuul 1.x,是一个基于阻塞1/0的API Gateway
+2.  Zuul 1.x基于Servlet 2.5使用阻塞架构它不支持任何长连接(如WebSocket) Zuul的设计模式和Nginx较像,每次1/0操作都是工作线程中选择一个执行,请求线程被E塞到工作线完成,但是差别是Nginx用C++实现, Zuul用Java实现,而JVM本身会有一次加载较慢的情况,使得Zuul的性能相对较差。
+3.  Zuul 2.x理念更先进,想基于Netty非阻塞和支持长连接,但SpringCloud目前还没有整合。Zuul 2.x的性能较Zuul 1.x有较大提升。在性能方面,根据官方提供的基准测试, Spring Cloud Gateway的RPS (每秒请求数)是Zuul的1.6倍。
+4.  Spring Cloud Gateway建立在Spring Framework 5、 Project Reactor和Spring Boot 2之上,使用非阻塞API. 
+5.  Spring Cloud Gateway还支持WebSocket,并且与Spring紧密集成拥有更好的开发体验
+
+### Gateway三大核心概念
+
+- route（路由）：路由是构建网关的基本模块,它由ID,目标URI,一系列的断言和过滤器组成,如果断言为true则匹配该路由
+- predicate(断言)：参考的是Java8的java.util.function.Predicate，开发人员可以匹配HTTP请求中的所有内容(例如请求头或请求参数),如果请求与断言相匹配则进行路由
+- filter(过滤)：指的是Spring框架中GatewayFilter的实例,使用过滤器,可以在请求被路由前或者之后对请求进行修改。
+
+web请求,通过一些匹配条件,定位到真正的服务节点。并在这个转发过程的前后,进行一些精细化控制。
+predicate就是我们的匹配条件;而fiter,就可以理解为一个无所不能的拦截器。有了这两个元素,再加上目标uri,就可以实现一个具体的路由了
+
+### Gateway工作流程
+
+![Gateway工作流程](D:\Documents\WIKI\微服务\Gateway工作流程.png)
+
+客户端向Spring Cloud Gateway发出请求。然后在Gateway Handler Mapping中找到与请求相匹配的路由,将其发送到Gateway Web Handler.
+
+Handler再通过指定的过滤器链来将请求发送到我们实际的服务执行业务逻辑,然后返回。
+过滤器之间用虚线分开是因为过滤器可能会在发送代理请求之前(pre)或之后（post）执行业务逻辑
+
+Filter在pre类型过滤可以做参数校验、权限校验、流量监控、日志输出、协议转换等
+
+在post类型过滤器中可以做响应内容、响应头的修改、日志输出、流量监控等非常重要的功能。
+
+**核心逻辑：路由转发+执行过滤器链**
+
+### 代码实战
+
+请查看电商7.0项目源码
+
+**路由配置的两种方法**
+
+- yml配置
+
+  ```yml
+  spring:
+    cloud:
+      gateway:
+        locator:
+          enabled: true
+        routes:
+          #认证服务
+          - id: leimingtech-auth-server
+            uri: lb://leimingtech-auth-server
+            order: 1
+            predicates:
+              - Path=/auth/**
+            filters:
+              - StripPrefix=0
+  ```
+
+- 配置类
+
+  ```java
+  @Bean
+  public RouteLocator routes(RouteLocatorBuilder builder) {
+      return builder.routes()
+          .route("circuitbreaker_route", r -> r.path("/consumingServiceEndpoint")
+              .filters(f -> f.circuitBreaker(c -> c.name("myCircuitBreaker").fallbackUri("forward:/inCaseOfFailureUseThis"))
+                  .rewritePath("/consumingServiceEndpoint", "/backingServiceEndpoint")).uri("lb://backing-service:8088")
+          .build();
+  }
+  ```
+
+**常用的Predicate**
+
+https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/
+
+**Filter分为两种**
+
+- GlobalFilter（全局网关）
+- GatewayFilter（单一网关）
+
+**Spring Cloud Gateway自带Filter**
+
+https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.2.RELEASE/reference/html/
+
+## 七、Spring Cloud组件 - Sleuth
+
+### 应用场景
+
+在微服务框架中，一个由客户端发起的请求在后台系统中会经过多个不同的服务节点调用来协同产生最后的请求结果，每一个前段请求都会形成一条复杂的分布式服务调用链路，链路中任何一个环出现高延时或者错误都会引起整个请求最后的失败。因此需要增加链路监控。
+
+### 是什么
+
+提供了一套完整的服务跟踪方案，在分布式系统中提供追踪解决方案并且兼容支持了zipkin（展现在可视化）
+
+上图
+
+![链路追踪](D:\Documents\WIKI\微服务\链路追踪.png)
+
+### 怎么使用
+
+Spring Cloud F版起已不需要自己构建Zipkin Server了，只需要调用jar包即可。 
+
+下载地址：https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/2.12.9/
+
+执行
+
+```linxu
+java -jar zipkin-server-2.12.9-exec.jar
+```
+
+访问地址：http://127.0.0.1:9411/zipkin/
+
+项目中需要增配置文件
+
+pom增加依赖：
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-zipkin</artifactId>
+</dependency>
+```
+
+yml文件增加如下配置：
+
+```yml
+spring:
+  sleuth:
+    sampler:
+      probability: 1 #采样率介于0和1之间   1表示全部采样 项目中使用建议0.5
+  zipkin:
+    base-url: 127.0.0.1:9411  # zipkin监控地址
+```
+
+![zipkin截图](D:\Documents\WIKI\微服务\zipkin截图.png)

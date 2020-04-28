@@ -14,6 +14,7 @@
     <modules>
         <module>hystrix-order</module>
         <module>hystrix-payment</module>
+        <module>hystrix-dashboard</module>
     </modules>
 
 
@@ -21,6 +22,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
 
         <dependency>
@@ -31,6 +36,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
     </dependencies>
