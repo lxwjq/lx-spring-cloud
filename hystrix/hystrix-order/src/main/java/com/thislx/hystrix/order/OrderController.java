@@ -18,7 +18,7 @@ import java.util.Map;
  **/
 @Slf4j
 @RestController
-@DefaultProperties(defaultFallback = "getGlobalPaymentFallback")
+//@DefaultProperties(defaultFallback = "getGlobalPaymentFallback")
 public class OrderController {
 
     @Resource
@@ -42,16 +42,16 @@ public class OrderController {
      * 1、代码膨胀，每一个业务方法都需要一个降级方法
      * 解决办法：定义统一的降级方法。
      * 客户端增加@DefaultProperties 业务方法上只增加@HystrixCommand使用全局降级方法。
-     * 2、代码耦合度高，业务逻辑方法与服务降级方法揉在一起7
+     * 2、代码耦合度高，业务逻辑方法与服务降级方法揉在一起
      *
      * @date 2020/4/26 22:04
      * @author lixiangx@leimingtech.com
      **/
     @GetMapping("hystrix/payment")
-//    @HystrixCommand(fallbackMethod = "getPaymentFallback", commandProperties = {
-//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
-//    })
-    @HystrixCommand
+    @HystrixCommand(fallbackMethod = "getPaymentFallback", commandProperties = {
+            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1500")
+    })
+//    @HystrixCommand
     public Map<String, String> getHystrixPayment() {
         Map<String, String> map = new HashMap<>();
         String payment = paymentService.payment();

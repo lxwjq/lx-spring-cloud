@@ -12,7 +12,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @version V1.0
  * @date 2020/4/25 17:41
  **/
-// TODO lixiang EnableHystrix与EnableCircuitBreaker区别
+//  EnableHystrix与EnableCircuitBreaker区别
+//  (1)、查看源码可知，@EnableHystrix注解的作用和@EnableCircuitBreaker注解的作用一样，@EnableHystrix注解对
+//     @EnableCircuitBreaker注解进行了封装；
+
 @EnableHystrix
 //@EnableCircuitBreaker
 @EnableFeignClients

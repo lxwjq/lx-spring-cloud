@@ -9,6 +9,7 @@
         <module>custom</module>
         <module>feign</module>
         <module>hystrix</module>
+        <module>nacos</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

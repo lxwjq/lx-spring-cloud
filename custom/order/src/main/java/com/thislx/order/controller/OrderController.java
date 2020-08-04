@@ -1,4 +1,4 @@
-package com.thislx.user;
+package com.thislx.order.controller;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +15,10 @@ import java.util.Map;
  * @date 2020/4/19 18:17
  **/
 @RestController
-public class UserController {
+public class OrderController {
 
     @Resource
     private RestTemplate restTemplate;
-
-    private String orderService = "http://RIBBON-ORDER";
 
 
     /**
@@ -29,10 +27,10 @@ public class UserController {
      * @date 2020/4/21 14:06
      * @author lixiangx@leimingtech.com
      **/
-    @GetMapping("user")
+    @GetMapping("order")
     public Map<String, String> getUser() {
         Map<String, String> map = new HashMap<>();
-        map.put("result", "user");
+        map.put("result", "order");
         return map;
     }
 
@@ -42,11 +40,27 @@ public class UserController {
      * @date 2020/4/21 14:06
      * @author lixiangx@leimingtech.com
      **/
-    @GetMapping("order")
+    @GetMapping("signle/payment")
     public Map<String, String> getsignlePower() {
         Map<String, String> map = new HashMap<>();
-        ResponseEntity<Object> forEntity = restTemplate.getForEntity(orderService + "/order", Object.class);
-        map.put("result", forEntity.getBody().toString());
+        String forObject = restTemplate.getForObject("http://localhost:6002/payment", String.class);
+        map.put("result", forObject);
+        return map;
+    }
+
+
+    /**
+     * 获取其他模块的信息（多节点）
+     * 其中一个节点故障  无法进行故障转移
+     *
+     * @date 2020/4/21 14:06
+     * @author lixiangx@leimingtech.com
+     **/
+    @GetMapping("payment")
+    public Map<String, String> getPower() {
+        Map<String, String> map = new HashMap<>();
+        String forEntity = restTemplate.getForObject("http://localhost/payment", String.class);
+        map.put("result", forEntity);
         return map;
     }
 }
